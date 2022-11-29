@@ -1,6 +1,9 @@
 # ~/app/uxf/MANIFEST
 # ~/app/go/tdb/MANIFEST
 
+# TODO: drop sentinals
+# TODO: support nullable fields in parse & Tdb.Write
+
 src/lib.rs
 src/parse.rs
 src/tdb.rs

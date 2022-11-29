@@ -13,6 +13,7 @@ pub type Record = Vec<Value>;
 
 #[derive(Clone, Debug)]
 pub enum Value {
+    Null,
     Bool(bool),
     Bytes(Vec<u8>),
     Date(NaiveDate),
@@ -23,6 +24,11 @@ pub enum Value {
 }
 
 impl Value {
+    /// Returns `true` if `Value::Null`; otherwise returns `false`.
+    pub fn is_null(&self) -> bool {
+        matches!(self, Value::Null)
+    }
+
     /// Returns `true` if `Value::Bool`; otherwise returns `false`.
     pub fn is_bool(&self) -> bool {
         matches!(self, Value::Bool(_))
@@ -127,6 +133,7 @@ impl Value {
     /// Returns the Value's `typename` (`bool`, `bytes', ... `str`).
     pub fn typename(&self) -> &'static str {
         match self {
+            Value::Null => VALUE_NAME_NULL,
             Value::Bool(_) => VTYPE_NAME_BOOL,
             Value::Bytes(_) => VTYPE_NAME_BYTES,
             Value::Date(_) => VTYPE_NAME_DATE,
@@ -332,6 +339,12 @@ impl PartialEq for Value {
 }
 
 impl Eq for Value {}
+
+impl Default for Value {
+    fn default() -> Self {
+        Value::Null
+    }
+}
 
 pub(crate) fn bytes_to_tdb(b: &[u8]) -> String {
     let mut s = String::from("(");
