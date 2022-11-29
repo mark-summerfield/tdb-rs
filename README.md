@@ -153,7 +153,7 @@ store this data and add it to the Tdb.
 |-----------|------------|-----------------------------|
 |tdb-go|Go|https://pkg.go.dev/github.com/mark-summerfield/tdb-go|
 |tdb-py|Python|https://pypi.org/project/tdb-py|
-|tdb-rs|Rust||
+|tdb-rs|Rust|https://crates.io/crates/tdb-rs|
 
 We will happily add links to implementations in other languages if they pass
 the tests. (Tdb is a relatively simple format to parse and write.) 
