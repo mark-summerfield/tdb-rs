@@ -1,10 +1,8 @@
 [package]
-name = "tdb"
+name = "tdb-rs"
 version = "0.1.0"
 edition = "2021"
-
 publish = true
-name = "tdb-rs"
 authors = [ "Mark Summerfield <mark@qtrac.eu>",]
 edition = "2021"
 include = [ "Cargo.toml", "src/**/*.rs",]
