@@ -1,17 +1,10 @@
 // Copyright © 2022 Mark Summerfield. All rights reserved.
 // License: GPLv3
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub mod consts;
+pub mod field;
+pub mod parse;
+pub mod table;
+pub mod tdb;
+pub mod util;
+pub mod value;

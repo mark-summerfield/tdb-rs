@@ -1,4 +1,14 @@
+# ~/app/uxf/MANIFEST
+# ~/app/go/tdb/MANIFEST
+
 src/lib.rs
+src/parse.rs
+src/tdb.rs
+src/table.rs
+src/field.rs
+src/value.rs
+src/util.rs
+src/consts.rs
 Cargo.toml
 
 README.md
