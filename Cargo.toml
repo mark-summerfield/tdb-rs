@@ -1,6 +1,6 @@
 [package]
 name = "tdb-rs"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 publish = true
 authors = [ "Mark Summerfield <mark@qtrac.eu>",]
@@ -9,16 +9,16 @@ description = "Rust crate for Tdb “Text DataBase” format - a plain text huma
 documentation = "https://docs.rs/tdb-rs/latest/tdb/"
 homepage = "https://github.com/mark-summerfield/tdb-rs"
 readme = "README.md"
-keywords = [ "database", "csv", "parser" ]
-categories = [ "database", "parsing" ]
+keywords = [ "database", "csv", "parser",]
+categories = [ "database", "parsing",]
 license = "GPL-3.0"
 
-[badges]
-maintenance = { status = "passively-maintained" }
+[dependencies]
+
+[badges.maintenance]
+status = "passively-maintained"
 
 [profile.release]
 strip = true
-opt-level = 3 # 3 is fastest binary; use "s" for smallest
+opt-level = 3
 lto = true
-
-[dependencies]
