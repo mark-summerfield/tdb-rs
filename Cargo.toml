@@ -3,6 +3,22 @@ name = "tdb"
 version = "0.1.0"
 edition = "2021"
 
+publish = true
+name = "tdb-rs"
+authors = [ "Mark Summerfield <mark@qtrac.eu>",]
+edition = "2021"
+include = [ "Cargo.toml", "src/**/*.rs",]
+description = "Rust crate for Tdb “Text DataBase” format - a plain text human readable typed database storage format."
+documentation = "https://docs.rs/tdb-rs/latest/tdb/"
+homepage = "https://github.com/mark-summerfield/tdb-rs"
+readme = "README.md"
+keywords = [ "database", "csv", "parser" ]
+categories = [ "text processing", "parser implementations"]
+license = "GPL-3.0"
+
+[badges]
+maintenance = { status = "passively-maintained" }
+
 [profile.release]
 strip = true
 opt-level = 3 # 3 is fastest binary; use "s" for smallest
