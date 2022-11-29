@@ -139,7 +139,7 @@ impl Value {
 
     /// Returns the value as a Tdb field value correctly accounting for
     /// decimals and sentinals.
-    pub fn value(&self, decimals: usize) -> String {
+    pub fn text(&self, decimals: usize) -> String {
         match self {
             Value::Bool(true) => "T".to_string(),
             Value::Bool(false) => "F".to_string(),
