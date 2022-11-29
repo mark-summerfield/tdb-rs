@@ -10,7 +10,7 @@ documentation = "https://docs.rs/tdb-rs/latest/tdb/"
 homepage = "https://github.com/mark-summerfield/tdb-rs"
 readme = "README.md"
 keywords = [ "database", "csv", "parser" ]
-categories = [ "text processing", "parser implementations"]
+categories = [ "database", "parsing" ]
 license = "GPL-3.0"
 
 [badges]
