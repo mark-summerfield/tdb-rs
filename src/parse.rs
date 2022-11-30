@@ -6,7 +6,7 @@ use crate::table::Table;
 use crate::tdb::Tdb;
 use anyhow::{bail, Result};
 
-pub fn parse<'a>(raw: &'a [u8]) -> Result<Tdb> {
+pub fn parse<'a>(raw: &'a [u8]) -> Result<Tdb<'a>> {
     let mut raw = raw;
     let mut db: Tdb;
     let mut table = Table::new();
@@ -28,7 +28,7 @@ pub fn parse<'a>(raw: &'a [u8]) -> Result<Tdb> {
 fn read_meta<'a>(
     raw: &'a [u8],
     lino: &mut usize,
-) -> Result<(&'a [u8], Table)> {
+) -> Result<(&'a [u8], Table<'a>)> {
     bail!("read_meta not implemented") // TODO
 }
 

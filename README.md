@@ -14,7 +14,7 @@ Perhaps best of all, a single Tdb file may contain one—or more—tables.
     - [CSV](#csv)
     - [Database](#database)
     - [Minimal Tdb Files](#minimal-tdb-files)
-    - [Metadata](#metadata)
+- [Timezones and Metadata](#timezones-and-metadata)
 - [Libraries](#libraries) (Go, Python, Rust)
 - [BNF](#bnf)
 - [Supplementary](#supplementary)
@@ -140,10 +140,32 @@ Again like the previous table, but now with two records, the first
 containing the value `0`, and the second containing null which is permitted
 since the field's type is nullable.
 
-### Metadata
+### Timezones and Metadata
+
+Tdb does not have direct timezone support. There are three simple solutions
+for this.
+
+If all the dates in the database are in the same timezone, then either store
+all dates as UTC. Alternatively, add a tiny configuration table with the
+timezone data, for example:
+
+    [Config key str value str?
+    %
+    <timezone> <+02:30>
+    ]
+
+If, however, the dates being stored have varying timezones, then add another
+column specifically for the timezone. Something along these lines:
+
+    [Readings meter str reading real when date timezone str
+    %
+    <EX194B4> 1932.49 2024-11-17 <-03:00>
+    <V1938DX> 8492.1 2024-10-30 <+02:30>
+    ]
 
 If comments or metadata are required, simply create an additional table to
-store this data and add it to the Tdb.
+store this data and add it to the Tdb. For example, use a Config table as
+shown above.
 
 ## Libraries
 

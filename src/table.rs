@@ -3,19 +3,21 @@
 
 use crate::field::Field;
 use crate::value::Record;
-use std::collections::BTreeMap;
+use std::collections::HashMap;
 
-pub struct Table {
-    name: String,                    // tablename
-    fields: BTreeMap<String, Field>, // metadata
+pub struct Table<'a> {
+    name: String,                   // tablename
+    field_names: Vec<&'a str>,      // to preserve reading order
+    fields: HashMap<String, Field>, // metadata
     records: Vec<Record>,
 }
 
-impl Table {
-    pub fn new() -> Table {
+impl<'a> Table<'a> {
+    pub fn new() -> Table<'a> {
         Table {
             name: "".to_string(),
-            fields: BTreeMap::new(),
+            field_names: vec![],
+            fields: HashMap::new(),
             records: vec![],
         }
     }

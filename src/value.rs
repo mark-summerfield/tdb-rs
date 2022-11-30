@@ -9,11 +9,10 @@ use crate::util::{escape, isclose64, sanitize_decimals};
 use chrono::{NaiveDate, NaiveDateTime};
 use std::fmt::{self, Write as _};
 
-pub type Record = Vec<Value>;
+pub type Record = Vec<Option<Value>>;
 
 #[derive(Clone, Debug)]
 pub enum Value {
-    Null,
     Bool(bool),
     Bytes(Vec<u8>),
     Date(NaiveDate),
@@ -24,11 +23,6 @@ pub enum Value {
 }
 
 impl Value {
-    /// Returns `true` if `Value::Null`; otherwise returns `false`.
-    pub fn is_null(&self) -> bool {
-        matches!(self, Value::Null)
-    }
-
     /// Returns `true` if `Value::Bool`; otherwise returns `false`.
     pub fn is_bool(&self) -> bool {
         matches!(self, Value::Bool(_))
@@ -133,7 +127,6 @@ impl Value {
     /// Returns the Value's `typename` (`bool`, `bytes', ... `str`).
     pub fn typename(&self) -> &'static str {
         match self {
-            Value::Null => VALUE_NAME_NULL,
             Value::Bool(_) => VTYPE_NAME_BOOL,
             Value::Bytes(_) => VTYPE_NAME_BYTES,
             Value::Date(_) => VTYPE_NAME_DATE,
@@ -145,7 +138,8 @@ impl Value {
     }
 
     /// Returns the value as a Tdb field value correctly accounting for
-    /// decimals and sentinals.
+    /// decimals and sentinals. The caller should check for None and output
+    /// '?' in that case; otherwise use this.
     pub fn text(&self, decimals: usize) -> String {
         match self {
             Value::Bool(true) => "T".to_string(),
@@ -339,12 +333,6 @@ impl PartialEq for Value {
 }
 
 impl Eq for Value {}
-
-impl Default for Value {
-    fn default() -> Self {
-        Value::Null
-    }
-}
 
 pub(crate) fn bytes_to_tdb(b: &[u8]) -> String {
     let mut s = String::from("(");
