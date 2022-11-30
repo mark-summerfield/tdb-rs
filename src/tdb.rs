@@ -7,7 +7,7 @@ use std::collections::HashMap;
 
 pub struct Tdb<'a> {
     table_names: Vec<&'a str>, // ref to tablename to preserve reading order
-    tables: HashMap<String, Table<'a>>, // key is tablename
+    tables: HashMap<String, Table>, // key is tablename
 }
 
 impl<'a> Tdb<'a> {

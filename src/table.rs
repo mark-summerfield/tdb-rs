@@ -3,21 +3,18 @@
 
 use crate::field::Field;
 use crate::value::Record;
-use std::collections::HashMap;
 
-pub struct Table<'a> {
-    name: String,                   // tablename
-    field_names: Vec<&'a str>,      // to preserve reading order
-    fields: HashMap<String, Field>, // metadata
+pub struct Table {
+    name: String,       // tablename
+    fields: Vec<Field>, // metadata
     records: Vec<Record>,
 }
 
-impl<'a> Table<'a> {
-    pub fn new() -> Table<'a> {
+impl Table {
+    pub fn new() -> Table {
         Table {
             name: "".to_string(),
-            field_names: vec![],
-            fields: HashMap::new(),
+            fields: vec![],
             records: vec![],
         }
     }
