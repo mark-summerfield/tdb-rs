@@ -25,13 +25,13 @@ Perhaps best of all, a single Tdb file may contain one—or more—tables.
 
 Tdb supports the following seven built-in datatypes.
 
-|**Type**<a name="table-of-built-in-types"></a>|**Example(s)**|**Notes**|
-|-----------|----------------------|--|--|
+|**Type**   |**Example(s)**        |**Notes**|
+|-----------|----------------------|---------|
 |`bool`     |`F`|A Tdb reader should also accept 'f', 'N', 'n', 't', 'Y', 'y', '0', '1'|
 |`bytes`    |`(20AC 65 66 48)`|There must be an even number of case-insensitive hex digits; whitespace (spaces, newlines, etc.) optional.|
 |`date`     |`2022-04-01`|Basic ISO8601 YYYY-MM-DD format.|
 |`datetime` |`2022-04-01T16:11:51`|ISO8601 YYYY-MM-DDTHH[:MM[:SS]] format; 1-sec resolution no timezone support.|
-|`int`      |`-192` `234` `7891409`|Standard integers with optional `-` sign.|
+|`int`      |`-192` `234` `7891409`|Standard integers.|
 |`real`     |`0.15` `0.7e-9` `2245.389`|Standard and scientific notation.|
 |`str`      |`<Some text which may include newlines>`|For &, <, >, use \&amp;, \&lt;, \&gt; respectively.|
 
@@ -145,9 +145,9 @@ since the field's type is nullable.
 Tdb does not have direct timezone support. There are three simple solutions
 for this.
 
-If all the dates in the database are in the same timezone, then either store
-all dates as UTC. Alternatively, add a tiny configuration table with the
-timezone data, for example:
+If all the dates in the database are in the same timezone, then one approach
+is to store all the dates as UTC. Alternatively, add a tiny configuration
+table with the timezone data, for example:
 
     [Config key str value str?
     %
